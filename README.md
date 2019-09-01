@@ -52,7 +52,7 @@ After it hashes a user pw it also "Salts" a pw as well to make sure that it is a
 
 - [ ] What are the three parts of the JSON Web Token?
 
-Payload, secrets, and options
+Payload, secrets, and options 
 
 ## Minimum Viable Product
 
