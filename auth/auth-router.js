@@ -30,6 +30,22 @@ router.post("/login", async (req, res) => {
       error: "`username` and `password` are both required!"
     });
   }
+
+  try {
+    const [user] = await db("users").where({ username });
+    if (user && bcrypt.compareSync(password, user.password)) {
+      req.session.isAuthenticated = true;
+      return res.status(200).end();
+    } else {
+      return res.status(401).json({
+        error: "The provided username and password do not match"
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: error.message
+    });
+  }
 });
 
 module.exports = router;
