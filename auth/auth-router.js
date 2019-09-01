@@ -1,14 +1,12 @@
 const router = require("express").Router();
 
 router.post("/register", async (req, res) => {
-  // implement registration
-  const user = req.body;
-  try {
-    if (!body) {
-      res.status(404).json({ message: "No body provided" });
-    } else {
-    }
-  } catch (error) {}
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({
+      error: "`username` and `password` are both required!"
+    });
+  }
 });
 
 router.post("/login", (req, res) => {
