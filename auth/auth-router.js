@@ -21,8 +21,15 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   // implement login
+
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({
+      error: "`username` and `password` are both required!"
+    });
+  }
 });
 
 module.exports = router;
